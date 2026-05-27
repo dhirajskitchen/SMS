@@ -5,11 +5,11 @@ from utils import input_student_id
 
 def Parent_options():
     id=input_student_id()
-    print("\n---Parent Options----\n")
-    print("1. View Student Details")
-    print("2. View Student Marks")
-    print("4. Exit")
     while True:
+        print("\n---Parent Options----\n")
+        print("1. View Student Details")
+        print("2. View Student Marks")
+        print("4. Exit")
         try:
             ch=int(input("Enter Choice number: "))
         except:

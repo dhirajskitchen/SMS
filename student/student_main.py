@@ -5,14 +5,15 @@ from utils import input_student_id
 
 def Student_options():
     id=input_student_id()
-    print("\n---Student Options----\n")
-    print("1. View Details")
-    print("2. Edit Details")
-    print("3. View Marks")
-    print("4. View Timetable")
-    print("5. View Attendance Details")
-    print("6. Exit")
+    
     while True:
+        print("\n---Student Options----\n")
+        print("1. View Details")
+        print("2. Edit Details")
+        print("3. View Marks")
+        print("4. View Timetable")
+        print("5. View Attendance Details")
+        print("6. Exit")
         try:
             ch=int(input("Enter Choice number: "))
         except:
