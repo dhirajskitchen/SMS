@@ -1,10 +1,11 @@
 from data.load_data import load_students,load_classes
 import datetime
+from data.store_data import store_students
 def view_details(id:int):
-    df=load_students()
+    students_df=load_students()
 
     classes_df=load_classes()
-    student_details = df[df['student_id'] == id].iloc[0]
+    student_details = students_df[students_df['student_id'] == id].iloc[0]
     student_class=classes_df[classes_df['class_id']==student_details['class_id']].iloc[0]
     
     print("\n---Student Details---\n")
@@ -17,7 +18,7 @@ def view_details(id:int):
     print("Fee status: ",student_details['fee_status'])
 
 def edit_details(id:int):
-    df=load_students()
+    students_df=load_students()
     print("\n--Enter new Values--\n")
     
     new_Name=input("Enter new Name: ")
@@ -40,10 +41,13 @@ def edit_details(id:int):
         print("Invalid Gender")
         new_gender=input("Enter Gender (M or F):").upper()
 
-    df.loc[df['student_id'] == id, [
+    students_df.loc[students_df['student_id'] == id, [
     'name',
     'dob',
     'gender'
     ]] = [new_Name,new_dob,new_gender]
 
-    # Write a function to commit changes in students.csv file
+    if(store_students(students_df)):
+        print("\nChanges Saved Successfully\n")
+    else:
+        print("\nFailed to Save Changes\n")

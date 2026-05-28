@@ -1,6 +1,6 @@
 from data.load_data import load_students,load_classes,load_marks,load_subjects
 from utils import input_teacher_id
-
+from data.store_data import store_marks
 def Mark_student(id:int,teacher_id:int,marks_df):
     student_df=load_students()
     classes_df=load_classes()
@@ -61,4 +61,7 @@ def Mark_class():
     for index, student in students.iterrows():
         marks_df=Mark_student(student['student_id'],teacher_id,marks_df)
 
-    # function to commit changes to csv
+    if(store_marks(marks_df)):
+        print("\nChanges Saved Successfully\n")
+    else:
+        print("\nFailed to Save Changes\n")

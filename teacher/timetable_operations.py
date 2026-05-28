@@ -1,4 +1,5 @@
 from data.load_data import load_timetable,load_subjects
+from data.store_data import store_timetable
 from utils import input_class_id
 import ast
 def create_or_edit_timetable():
@@ -24,7 +25,34 @@ def create_or_edit_timetable():
             continue
         tt_dict[slot]=subject
 
-    # Function to commit changes to timatable.csv
+    tt_string = str(tt_dict)
+
+    # Update existing row
+    if not tt_row.empty:
+
+        timetable_df.loc[
+            timetable_df['class_id'] == class_id,
+            'timetable'
+        ] = tt_string
+
+    # Add new row
+    else:
+
+        new_row = {
+            'class_id': class_id,
+            'timetable': tt_string
+        }
+
+        timetable_df = pd.concat(
+            [timetable_df, pd.DataFrame([new_row])],
+            ignore_index=True
+        )
+        
+
+    if(store_timetable(timetable_df)):
+        print("\nChanges Saved Successfully\n")
+    else:
+        print("\nFailed to Save Changes\n")
 
 def get_subject(slot):
     subjects_df=load_subjects()

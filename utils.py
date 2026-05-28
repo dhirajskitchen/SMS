@@ -28,7 +28,7 @@ def input_application_no():
     while True:
         try:
             applications_no=int(input("Enter Application No: "))
-            if applications_no in applications_df['applications_no'].values:
+            if applications_no in applications_df['application_no'].values:
                 return id
             print("Invalid Application No")
         except:

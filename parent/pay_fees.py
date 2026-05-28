@@ -1,4 +1,5 @@
 from data.load_data import load_students
+from data.store_data import store_students
 
 def pay_fees(id:int):
     students_df=load_students()
@@ -29,3 +30,7 @@ def pay_fees(id:int):
             print("Invalid Choice")
     
     # commit changes in students_df
+    if(store_students(students_df)):
+        print("\nChanges Saved Successfully\n")
+    else:
+        print("\nFailed to Save Changes\n")

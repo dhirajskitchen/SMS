@@ -1,5 +1,6 @@
 import datetime
 from data.load_data import load_application
+from data.store_data import store_application
 def submit_application():
     application_df=load_application()
     print("\n--Enter new Values--\n")
@@ -38,8 +39,13 @@ def submit_application():
         "class_grade":class_grade,
         "status":"Pending"
     }
+    
     application_df.loc[len(application_df)] = new_application
     print("\nApplication Submitted Successfully\n")
     print(f"Check Application Status using the application no: {new_application['application_no']}")
 
     # Function to save updated application.csv
+    if(store_application(application_df)):
+        print("\nChanges Saved Successfully\n")
+    else:
+        print("\nFailed to Save Changes\n")

@@ -1,5 +1,5 @@
 from data.load_data import load_application,load_students,load_classes
-
+from data.store_data import store_application,store_classes,store_students
 def view_applications():
     applications_df=load_application()
     students_df=load_students()
@@ -8,7 +8,7 @@ def view_applications():
 
     print("\n--Pending Application--\n")
     for index, application in pending_applications.iterrows():
-        view_application(application)
+        application_details(application)
         print("\n--Application Choices--\n")
         print("1. Accept")
         print("2. Reject")
@@ -31,7 +31,22 @@ def view_applications():
                 print("Invalid Choice")
 
     # Commit changes in application_df,classes_df and students_df
-def view_application(application):
+    if(store_students(students_df)):
+        print("\nStudent added Successfully\n")
+    else:
+        print("\nFailed to add Student\n")
+
+    if(store_classes(classes_df)):
+        print("\Class strength increased Successfully\n")
+    else:
+        print("\nFailed to increase class strength\n")
+    
+    if(store_application(applications_df)):
+        print("\nApplication status Changed successfully\n")
+    else:
+        print("\nFailed to change application status\n")
+
+def application_details(application):
     print("Application No: ",application['application_no'])
     print("Name: ",application['name'])
     print("DOB: ",application['dob'])
