@@ -1,5 +1,6 @@
 from student.student_details import view_details,edit_details
 from student.view_marks import view_marks
+from student.view_attendance import view_attendance
 from student.view_timetable import view_timetable
 from utils import input_student_id
 
@@ -27,6 +28,8 @@ def Student_options():
             view_marks(id)
         elif ch==4:
             view_timetable(id)
+        elif ch==5:
+            view_attendance(id)
         elif ch==6:
             break
         else:

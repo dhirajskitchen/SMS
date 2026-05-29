@@ -26,5 +26,10 @@ def load_marks():
 def load_timetable():
     return pd.read_csv("./data/timetable.csv")
 
+# LOAD APPLICATION TABLE
 def load_application():
     return pd.read_csv("./data/application.csv")
+
+# LOAD ATTENDANCE TABLE
+def load_attendance():
+    return pd.read_csv("./data/attendance.csv")

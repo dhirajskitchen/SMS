@@ -1,5 +1,19 @@
 from data.load_data import load_students,load_teachers,load_application,load_classes
 from student.student_details import view_details,edit_details
+import datetime
+
+def input_date():
+    while True:
+        try:
+            date_str = input("Enter Date (DD-MM-YYYY): ")
+            date_obj = datetime.datetime.strptime(date_str, "%d-%m-%Y").date()
+            # Check if date is not in future
+            if date_obj > datetime.date.today():
+                print("Cannot mark attendance for future dates")
+                continue
+            return date_obj
+        except ValueError:
+            print("Invalid Date Format")
 
 def input_student_id():
     students_df=load_students()
@@ -29,7 +43,7 @@ def input_application_no():
         try:
             applications_no=int(input("Enter Application No: "))
             if applications_no in applications_df['application_no'].values:
-                return id
+                return applications_no
             print("Invalid Application No")
         except:
             print("Invalid Application No")

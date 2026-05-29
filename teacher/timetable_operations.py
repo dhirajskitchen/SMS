@@ -2,6 +2,7 @@ from data.load_data import load_timetable,load_subjects
 from data.store_data import store_timetable
 from utils import input_class_id
 import ast
+import pandas as pd
 def create_or_edit_timetable():
     timetable_df=load_timetable()
 

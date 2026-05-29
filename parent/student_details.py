@@ -20,7 +20,7 @@ def edit_details(id:int):
     df=load_students()
     print("\n--Enter new Values--\n")
     
-    new_Name=input()
+    new_Name=input("Enter new Name: ")
 
     # To ensure Date is imported in right format
     while True:

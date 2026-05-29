@@ -9,6 +9,7 @@ def Parent_options():
         print("\n---Parent Options----\n")
         print("1. View Student Details")
         print("2. View Student Marks")
+        print("3. Pay Fees")
         print("4. Exit")
         try:
             ch=int(input("Enter Choice number: "))

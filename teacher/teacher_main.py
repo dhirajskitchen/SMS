@@ -1,6 +1,7 @@
 from teacher.class_details import view_class_details
 from teacher.student_details import view_details
 from teacher.enter_marks import Mark_class
+from teacher.mark_attendance import mark_attendance
 from teacher.timetable_operations import create_or_edit_timetable
 def Teacher_options():
     while True:
@@ -8,6 +9,7 @@ def Teacher_options():
         print("1. View Class Details")
         print("2. View Student Details")
         print("3. Enter Marks")
+        print("4. Mark Attendance")
         print("5. Edit or Create Timetable")
         print("6. Exit ")
         try:
@@ -21,6 +23,8 @@ def Teacher_options():
             view_details()
         elif ch==3:
             Mark_class()
+        elif ch==4:
+            mark_attendance()
         elif ch==5:
             create_or_edit_timetable()
         elif ch==6:

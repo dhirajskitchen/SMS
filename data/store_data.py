@@ -46,3 +46,10 @@ def store_timetable(df):
         return True
     except:
         return False
+
+def store_attendance(df):
+    try:
+        df.to_csv("./data/attendance.csv", index=False)
+        return True
+    except:
+        return False
