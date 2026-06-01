@@ -14,7 +14,8 @@ def view_class_details():
     print("Subjects: ",get_subjects(class_details['subject_ids']))
     print("Class Teacher ID: ",class_details['class_teacher_id'])
     print("Class Teacher: ",teachers_df[teachers_df['teacher_id']==class_details['class_teacher_id']].iloc[0]['name'])
-
+    print("Class Strength: ",class_details['strength'])
+    
 def get_subjects(subject_ids):
     subjects_df=load_subjects()
     subject_ids = list(

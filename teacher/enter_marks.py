@@ -28,7 +28,7 @@ def Mark_student(id:int,teacher_id:int,marks_df):
         subject=subject_df[subject_df['subject_id']==subject_id].iloc[0]['subject_name']
         while True:
             try:
-                mark=int(input(f"Enter Marks for {student_df[student_df['student_id']==id].iloc[0]['name']} ({id}) in {subject}"))
+                mark=int(input(f"\nEnter Marks for {student_df[student_df['student_id']==id].iloc[0]['name']} ({id}) in {subject}: "))
                 if mark in range(0,101):
                     break
                 print("Invalid Mark")
