@@ -3,11 +3,13 @@ from data.store_data import store_timetable
 from utils import input_class_id
 import ast
 import pandas as pd
+from utils import input_class_teacher_id
 def create_or_edit_timetable():
+    
     timetable_df=load_timetable()
 
     class_id=input_class_id()
-
+    teacher_id=input_class_teacher_id(class_id)
     tt_row = timetable_df[
         timetable_df['class_id'] == class_id
     ]

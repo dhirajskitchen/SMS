@@ -3,9 +3,9 @@ from data.load_data import load_application
 from data.store_data import store_application
 def submit_application():
     application_df=load_application()
-    print("\n--Enter new Values--\n")
+    print("\n--Enter Values--\n")
     
-    name=input("Enter new Name: ")
+    name=input("Enter Name: ")
 
     # To ensure Date is imported in right format
     while True:

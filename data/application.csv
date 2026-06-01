@@ -3,3 +3,4 @@ application_no,name,dob,gender,class_grade,status
 2,Harish,2011-09-14,M,7,Accepted
 3,Sanjana,2012-11-22,F,6,Rejected
 4,TestStudent,2010-05-15,M,6,Accepted
+5,Dhiraj,2005-05-22,M,11,Rejected

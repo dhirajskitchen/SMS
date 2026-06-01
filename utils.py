@@ -58,3 +58,18 @@ def input_class_id():
             print("Invalid ID")
         except ValueError:
             print("Invalid ID")
+
+def input_class_teacher_id(class_id:int):
+    teachers_df=load_teachers()
+    classes_df=load_classes()
+    while True:
+        try:
+            id=int(input("Enter Teacher ID: "))
+            if id==classes_df[classes_df['class_id']==class_id].iloc[0]['class_teacher_id']:
+                return id
+            elif id in teachers_df['teacher_id'].values:
+                print("Your not the class teacher for this class")
+                continue
+            print("Invalid ID")
+        except:
+            print("Invalid ID")
