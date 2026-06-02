@@ -73,3 +73,12 @@ def input_class_teacher_id(class_id:int):
             print("Invalid ID")
         except:
             print("Invalid ID")
+
+def get_phone_number():
+    while True:
+        phone = input("Enter a 10-digit phone number: ").strip()
+
+        if phone.isdigit() and len(phone) == 10:
+            return phone
+
+        print("Invalid phone number. Please enter exactly 10 digits.")

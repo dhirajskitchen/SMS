@@ -1,4 +1,4 @@
-from parent.student_details import view_details
+from parent.student_details import view_details,edit_details
 from parent.view_marks import view_marks
 from parent.pay_fees import pay_fees
 from utils import input_student_id
@@ -10,7 +10,8 @@ def Parent_options():
         print("1. View Student Details")
         print("2. View Student Marks")
         print("3. Pay Fees")
-        print("4. Exit")
+        print("4. Edit Student details")
+        print("5. Exit")
         try:
             ch=int(input("Enter Choice number: "))
         except:
@@ -23,6 +24,8 @@ def Parent_options():
         elif ch==3:
             pay_fees(id)
         elif ch==4:
+            edit_details(id)
+        elif ch==5:
             break
         else:
             print("Invalid Choice")

@@ -16,4 +16,5 @@ def view_details():
     print("Gender: ",student_details['gender'])
     print("Class and Section: ",student_class['class_grade'],student_class['section'])
     print("Attendance Percentage: ",student_details['attendance_percentage'])
+    print("Parent Phone ",student_details['phone'])
     print("Fee status: ",student_details['fee_status'])

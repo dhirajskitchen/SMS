@@ -1,6 +1,7 @@
 from data.load_data import load_students,load_classes
 import datetime
 from data.store_data import store_students
+from utils import get_phone_number
 def view_details(id:int):
     students_df=load_students()
 
@@ -15,10 +16,11 @@ def view_details(id:int):
     print("Gender: ",student_details['gender'])
     print("Class and Section: ",student_class['class_grade'],student_class['section'])
     print("Attendance Percentage: ",student_details['attendance_percentage'])
+    print("Parent Phone ",student_details['phone'])
     print("Fee status: ",student_details['fee_status'])
 
 def edit_details(id:int):
-    students_df=load_students()
+    df=load_students()
     print("\n--Enter new Values--\n")
     
     new_Name=input("Enter new Name: ")
@@ -28,10 +30,7 @@ def edit_details(id:int):
         dob = input("Enter DOB (DD-MM-YYYY): ")
 
         try:
-            new_dob = datetime.datetime.strptime(
-                dob,
-                "%d-%m-%Y"
-            ).strftime("%Y-%m-%d")
+            new_dob = datetime.datetime.strptime(dob, "%d-%m-%Y").date()
             break
         except ValueError:
             print("Invalid Date Format")
@@ -40,14 +39,10 @@ def edit_details(id:int):
     while(len(new_gender)!=1 or  (new_gender!="M" and new_gender!="F")):
         print("Invalid Gender")
         new_gender=input("Enter Gender (M or F):").upper()
-
-    students_df.loc[students_df['student_id'] == id, [
+    new_phone=get_phone_number
+    df.loc[df['student_id'] == id, [
     'name',
     'dob',
-    'gender'
-    ]] = [new_Name,new_dob,new_gender]
-
-    if(store_students(students_df)):
-        print("\nChanges Saved Successfully\n")
-    else:
-        print("\nFailed to Save Changes\n")
+    'gender',
+    'phone'
+    ]] = [new_Name,new_dob,new_gender,new_phone]

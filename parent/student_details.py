@@ -1,5 +1,6 @@
 from data.load_data import load_students,load_classes
 import datetime
+from utils import get_phone_number
 def view_details(id:int):
     df=load_students()
 
@@ -14,6 +15,7 @@ def view_details(id:int):
     print("Gender: ",student_details['gender'])
     print("Class and Section: ",student_class['class_grade'],student_class['section'])
     print("Attendance Percentage: ",student_details['attendance_percentage'])
+    print("Parent Phone ",student_details['phone'])
     print("Fee status: ",student_details['fee_status'])
 
 def edit_details(id:int):
@@ -36,11 +38,12 @@ def edit_details(id:int):
     while(len(new_gender)!=1 or  (new_gender!="M" and new_gender!="F")):
         print("Invalid Gender")
         new_gender=input("Enter Gender (M or F):").upper()
-
+    new_phone=get_phone_number
     df.loc[df['student_id'] == id, [
     'name',
     'dob',
-    'gender'
-    ]] = [new_Name,new_dob,new_gender]
+    'gender',
+    'phone'
+    ]] = [new_Name,new_dob,new_gender,new_phone]
 
     # Write a function to commit changes in students.csv file
