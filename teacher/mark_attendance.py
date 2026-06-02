@@ -1,6 +1,6 @@
 from data.load_data import load_students, load_classes, load_attendance
 from data.store_data import store_attendance, store_students
-from utils import input_class_id, input_date
+from utils import input_class_id, input_date,input_class_teacher_id
 import datetime
 
 def mark_attendance():
@@ -9,8 +9,9 @@ def mark_attendance():
     students_df = load_students()
     
     class_id = input_class_id()
+    input_class_teacher_id(class_id)
     date_obj = input_date()
-    
+
     # Get all students in the class
     class_students = students_df[students_df['class_id'] == class_id]
     

@@ -1,5 +1,5 @@
 from data.load_data import load_students,load_classes,load_marks,load_subjects
-from utils import input_class_teacher_id
+from utils import input_class_teacher_id,input_class_id
 from data.store_data import store_marks
 def Mark_student(id:int,teacher_id:int,marks_df):
     student_df=load_students()
@@ -29,7 +29,7 @@ def Mark_student(id:int,teacher_id:int,marks_df):
         while True:
             try:
                 mark=int(input(f"\nEnter Marks for {student_df[student_df['student_id']==id].iloc[0]['name']} ({id}) in {subject}: "))
-                if mark in range(0,101):
+                if mark in list(range(0,101)):
                     break
                 print("Invalid Mark")
             except ValueError:
@@ -45,16 +45,8 @@ def Mark_student(id:int,teacher_id:int,marks_df):
 
 def Mark_class():
     student_df=load_students()
-    classes_df=load_classes()
     marks_df=load_marks()
-    while True:
-        try:
-            class_id=int(input("Enter Class ID: "))
-            if class_id in classes_df['class_id'].values:
-                break
-            print("Invalid ID")
-        except:
-            print("Invalid ID")
+    class_id=input_class_id()
     teacher_id=input_class_teacher_id(class_id)
     students=student_df[student_df['class_id']==class_id]
     for index, student in students.iterrows():
