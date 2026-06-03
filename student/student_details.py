@@ -24,6 +24,9 @@ def edit_details(id:int):
     print("\n--Enter new Values--\n")
     
     new_Name=input("Enter new Name: ")
+    while(new_Name==""):
+        print("Name Can't be empty")
+        new_Name=input("Enter new Name: ")
 
     # To ensure Date is imported in right format
     while True:

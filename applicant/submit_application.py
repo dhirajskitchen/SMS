@@ -1,11 +1,15 @@
 import datetime
 from data.load_data import load_application
 from data.store_data import store_application
+from utils import get_phone_number
 def submit_application():
     application_df=load_application()
     print("\n--Enter Values--\n")
     
     name=input("Enter Name: ")
+    while(name==""):
+        print("Name Can't be empty")
+        name=input("Enter Name: ")
 
     # To ensure Date is imported in right format
     while True:
@@ -31,12 +35,14 @@ def submit_application():
         except ValueError:
             print("Invalid Grade")
 
+    phone=get_phone_number()
     new_application = {
         'application_no':  application_df['application_no'].max() + 1,
         "name":name,
         "dob": dob,
         "gender":gender,
         "class_grade":class_grade,
+        "phone":phone,
         "status":"Pending"
     }
     
