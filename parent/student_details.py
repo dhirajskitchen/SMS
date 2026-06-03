@@ -1,5 +1,6 @@
 from data.load_data import load_students,load_classes
 import datetime
+from data.store_data import store_students
 from utils import get_phone_number
 def view_details(id:int):
     df=load_students()
@@ -38,7 +39,7 @@ def edit_details(id:int):
     while(len(new_gender)!=1 or  (new_gender!="M" and new_gender!="F")):
         print("Invalid Gender")
         new_gender=input("Enter Gender (M or F):").upper()
-    new_phone=get_phone_number
+    new_phone=get_phone_number()
     df.loc[df['student_id'] == id, [
     'name',
     'dob',
@@ -46,4 +47,5 @@ def edit_details(id:int):
     'phone'
     ]] = [new_Name,new_dob,new_gender,new_phone]
 
-    # Write a function to commit changes in students.csv file
+    store_students(df)
+    print("Student details updated successfully.")

@@ -1,5 +1,4 @@
 from data.load_data import load_students,load_teachers,load_application,load_classes
-from student.student_details import view_details,edit_details
 import datetime
 
 def input_date():

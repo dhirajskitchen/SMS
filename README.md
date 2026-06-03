@@ -1,53 +1,60 @@
 # School Management System (SMS)
 
-A simple Python command-line school management system that manages students, teachers, classes, attendance, marks, timetables, applications, and parent interactions using CSV files as the data store.
+A Python command-line school management system for managing students, teachers, classes, attendance, marks, timetables, applications, and parent interactions.
 
-## Features
+## Overview
 
-- Student role: view and edit student details, view marks, attendance, and timetable
-- Parent role: view student details, view marks, pay fees
-- Teacher role: view class details, view student details, enter marks, mark attendance, and manage timetables
-- Principal role: view class details, view student details, and review applications
-- Applicant role: submit new applications and check application status
-- Data stored in CSV files under the `data/` folder
+This project uses CSV files in the `data/` folder as its storage backend. It supports different user roles with separate workflows:
+
+- Applicants
+- Students
+- Parents
+- Teachers
+- Principals
 
 ## Prerequisites
 
 - Python 3.8 or later
-- `pandas` library
+- `pandas`
 
-## Setup
+## Installation
 
 1. Open a terminal in the project root directory.
 2. Install dependencies:
 
 ```bash
-python -m pip install pandas
+python -m pip install -r requirements.txt
 ```
 
-3. Generate initial CSV data (optional, if data files are not present or you want fresh sample data):
+## Initialize Data
+
+If the CSV data files do not exist or you want to refresh the sample dataset, run:
 
 ```bash
 python data/fill_data.py
 ```
 
+This creates or overwrites sample files in the `data/` folder.
+
 ## Running the Application
 
-From the project root directory, run:
+Start the CLI application from the project root:
 
 ```bash
 python main.py
 ```
 
-Follow the menu prompts to choose a user type and perform actions.
+Choose a role from the main menu and follow the prompts.
 
-## User Roles and Use Cases
+## User Roles
 
 ### Applicant
-- Submit application
+
+- Submit a new application
 - Check application status
 
 ### Student
+
 - View student details
 - Edit student details
 - View marks
@@ -55,56 +62,52 @@ Follow the menu prompts to choose a user type and perform actions.
 - View attendance details
 
 ### Parent
+
 - View student details
+- Edit student details
 - View student marks
 - Pay fees
 
 ### Teacher
+
 - View class details
 - View student details
 - Enter marks
 - Mark attendance
-- Edit or create timetable
+- Create or edit timetables
 
 ### Principal
+
 - View class details
 - View student details
-- View applications
-
-## Data Files
-
-The application uses the following CSV files under `data/`:
-
-- `students.csv`
-  - `student_id`, `name`, `dob`, `gender`, `class_id`, `attendance_percentage`, `fee_status`
-- `teachers.csv`
-  - `teacher_id`, `name`, `subject_id`
-- `subjects.csv`
-  - `subject_id`, `subject_name`
-- `classes.csv`
-  - `class_id`, `class_grade`, `section`, `subject_ids`, `class_teacher_id`, `strength`
-- `marks.csv`
-  - `mark_id`, `student_id`, `subject_id`, `teacher_id`, `marks_obtained`, `total_marks`
-- `attendance.csv`
-  - `attendance_id`, `student_id`, `class_id`, `date`, `status`
-- `timetable.csv`
-  - `class_id`, `day`, `time_slot`, `subject_id`
-- `application.csv`
-  - `application_no`, `name`, `dob`, `gender`, `class_grade`, `status`
+- View application submissions
 
 ## Project Structure
 
-- `main.py` - entry point for the application
-- `utils.py` - helper input validation utilities
-- `data/` - CSV storage and data loading/saving modules
-- `applicant/` - applicant workflow modules
-- `student/` - student workflow modules
-- `parent/` - parent workflow modules
-- `teacher/` - teacher workflow modules
-- `principal/` - principal workflow modules
+- `main.py` — program entry point
+- `utils.py` — common helper functions and validation logic
+- `data/` — data loading, storage, and CSV utilities
+- `applicant/` — applicant-related modules
+- `student/` — student-related modules
+- `parent/` — parent-related modules
+- `teacher/` — teacher-related modules
+- `principal/` — principal-related modules
+
+## Data Files
+
+The application uses the following CSV files in the `data/` folder:
+
+- `students.csv`
+- `teachers.csv`
+- `subjects.csv`
+- `classes.csv`
+- `marks.csv`
+- `attendance.csv`
+- `timetable.csv`
+- `application.csv`
 
 ## Notes
 
-- The application uses CSV files as the backend, so data is persisted across runs if the files are saved.
-- The system is designed for simple CLI interaction and sample school management functionality.
-- To reset the sample dataset, re-run `python data/fill_data.py`.
+- CSV storage means data persists across runs when saved.
+- Re-run `python data/fill_data.py` to regenerate sample data.
+- For best results, run the app from the project root so file paths resolve correctly.
