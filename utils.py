@@ -8,12 +8,25 @@ def input_date():
             date_obj = datetime.datetime.strptime(date_str, "%d-%m-%Y").date()
             # Check if date is not in future
             if date_obj > datetime.date.today():
-                print("Cannot mark attendance for future dates")
+                print("Date cannot be of future ")
                 continue
-            return date_obj
+            return str(date_obj)
         except ValueError:
             print("Invalid Date Format")
 
+def input_DOB():
+    while True:
+        try:
+            date_str = input("Enter DOB (DD-MM-YYYY): ")
+            date_obj = datetime.datetime.strptime(date_str, "%d-%m-%Y").date()
+            # Check if date is not in future
+            if date_obj > datetime.date.today():
+                print("Date cannot be of future ")
+                continue
+            return str(date_obj)
+        except ValueError:
+            print("Invalid Date Format")
+    
 def input_student_id():
     students_df=load_students()
     while True:

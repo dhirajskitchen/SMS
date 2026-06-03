@@ -37,7 +37,7 @@ def mark_attendance():
         existing = attendance_df[
             (attendance_df['student_id'] == student_id) & 
             (attendance_df['class_id'] == class_id) & 
-            (attendance_df['date'] == str(date_obj))
+            (attendance_df['date'] == date_obj)
         ]
         
         if not existing.empty:
@@ -45,7 +45,7 @@ def mark_attendance():
             attendance_df.loc[
                 (attendance_df['student_id'] == student_id) & 
                 (attendance_df['class_id'] == class_id) & 
-                (attendance_df['date'] == str(date_obj)),
+                (attendance_df['date'] == date_obj),
                 'status'
             ] = attendance_status
         else:

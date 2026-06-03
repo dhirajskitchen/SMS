@@ -1,6 +1,6 @@
 student_id,name,dob,gender,class_id,attendance_percentage,fee_status,phone
 1,Dhiraj,2005-05-22,M,3,80.0,Paid,1234567890
-2,Vivaan,2010-04-13,M,3,60.0,Paid,1234567890
+2,Dhiraj,2005-05-22,M,3,60.0,Paid,9080537699
 3,Aditya,2013-08-04,F,3,80.0,Pending,1234567890
 4,Diya,2012-10-16,F,3,80.0,Pending,1234567890
 5,Ananya,2011-02-16,M,2,86.88,Pending,1234567890

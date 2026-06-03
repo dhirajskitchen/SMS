@@ -1,7 +1,7 @@
 from data.load_data import load_students,load_classes
 import datetime
 from data.store_data import store_students
-from utils import get_phone_number
+from utils import get_phone_number,input_DOB
 def view_details(id:int):
     df=load_students()
 
@@ -29,14 +29,7 @@ def edit_details(id:int):
         new_Name=input("Enter new Name: ")
 
     # To ensure Date is imported in right format
-    while True:
-        dob = input("Enter DOB (DD-MM-YYYY): ")
-
-        try:
-            new_dob = datetime.datetime.strptime(dob, "%d-%m-%Y").date()
-            break
-        except ValueError:
-            print("Invalid Date Format")
+    new_dob=input_DOB()
 
     new_gender=input("Enter Gender (M or F):").upper()
     while(len(new_gender)!=1 or  (new_gender!="M" and new_gender!="F")):

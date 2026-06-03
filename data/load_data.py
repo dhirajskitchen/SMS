@@ -4,7 +4,9 @@ import os
 # LOAD STUDENTS TABLE
 def load_students():
     # print(os.getcwd())
-    return pd.read_csv("./data/students.csv")
+    df=pd.read_csv("./data/students.csv")
+    df["phone"] = df["phone"].astype(str)
+    return df
 
 # LOAD SUBJECTS TABLE
 def load_subjects():

@@ -1,7 +1,7 @@
 import datetime
 from data.load_data import load_application
 from data.store_data import store_application
-from utils import get_phone_number
+from utils import get_phone_number,input_DOB
 def submit_application():
     application_df=load_application()
     print("\n--Enter Values--\n")
@@ -12,15 +12,8 @@ def submit_application():
         name=input("Enter Name: ")
 
     # To ensure Date is imported in right format
-    while True:
-        dob = input("Enter DOB (DD-MM-YYYY): ")
-
-        try:
-            dob = datetime.datetime.strptime(dob, "%d-%m-%Y").date()
-            break
-        except ValueError:
-            print("Invalid Date Format")
-
+    dob=input_DOB()
+    
     gender=input("Enter Gender (M or F):").upper()
     while(len(gender)!=1 or  (gender!="M" and gender!="F")):
         print("Invalid Gender")
