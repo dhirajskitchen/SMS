@@ -28,7 +28,6 @@ def edit_details(id:int):
         print("Name Can't be empty")
         new_Name=input("Enter new Name: ")
 
-    # To ensure Date is imported in right format
     new_dob=input_DOB()
 
     new_gender=input("Enter Gender (M or F):").upper()
@@ -43,5 +42,7 @@ def edit_details(id:int):
     'phone'
     ]] = [new_Name,new_dob,new_gender,new_phone]
 
-    store_students(df)
-    print("Student details updated successfully.")
+    if  store_students(df):
+        print("Student details updated successfully.")
+    else:
+        print("Failed to update student details")
