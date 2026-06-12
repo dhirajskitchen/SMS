@@ -15,7 +15,7 @@ def homePage():
         print("5. Parents")
         print("6. Exit")
         try:
-            ch=int(input("Enter Choice number: "))
+            ch=int(input("\nEnter Choice number: "))
         except:
             ch=-1
         if ch==1:
@@ -31,6 +31,6 @@ def homePage():
         elif ch==6:
             break
         else:
-            print("Invalid choice")
+            print("\nInvalid choice\n")
 
 homePage()

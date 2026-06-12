@@ -6,7 +6,7 @@ def view_marks(id:int):
     student_marks = marks_df[marks_df['student_id'] == id]
     print("\n---Student Marks---\n")
     for index, row in student_marks.iterrows():
-        print("Subject ID:", subjects_df[
+        print("Subject: ", subjects_df[
                                             subjects_df['subject_id'] == row['subject_id']
                                         ].iloc[0][
                                             'subject_name'])
