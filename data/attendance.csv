@@ -25,3 +25,6 @@ attendance_id,student_id,class_id,date,status
 24,4,3,2026-05-28,Present
 25,7,1,2005-05-22,Present
 26,11,1,2005-05-22,Absent
+27,7,1,2026-06-12,Present
+28,11,1,2026-06-12,Present
+29,12,1,2026-06-12,Present

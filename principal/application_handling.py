@@ -5,7 +5,9 @@ def view_applications():
     students_df=load_students()
     classes_df=load_classes()
     pending_applications=applications_df[applications_df['status']=='Pending']
-
+    if len(pending_applications)==0:
+        print("\n--No application Pending--\n")
+        return None
     print("\n--Pending Application--\n")
     for index, application in pending_applications.iterrows():
         application_details(application)
@@ -21,30 +23,32 @@ def view_applications():
                 ch=-1
             if ch==1:
                 applications_df,students_df,classes_df=accept_application(application,applications_df,students_df,classes_df)
+
+                 # Commit changes in application_df,classes_df and students_df
+                if(store_students(students_df)):
+                    print("\nStudent added Successfully\n")
+                else:
+                    print("\nFailed to add Student\n")
+
+                if(store_classes(classes_df)):
+                    print("\nClass strength increased Successfully\n")
+                else:
+                    print("\nFailed to increase class strength\n")
+                
+                if(store_application(applications_df)):
+                    print("\nApplication status Changed successfully\n")
+                else:
+                    print("\nFailed to change application status\n")
                 break
             elif ch==2:
                 applications_df=reject_application(application,applications_df)
+                if(store_application(applications_df)):
+                    print("\nApplication status Changed successfully\n")
                 break
             elif ch==3:
                 break
             else:
                 print("Invalid Choice")
-
-    # Commit changes in application_df,classes_df and students_df
-    if(store_students(students_df)):
-        print("\nStudent added Successfully\n")
-    else:
-        print("\nFailed to add Student\n")
-
-    if(store_classes(classes_df)):
-        print("\Class strength increased Successfully\n")
-    else:
-        print("\nFailed to increase class strength\n")
-    
-    if(store_application(applications_df)):
-        print("\nApplication status Changed successfully\n")
-    else:
-        print("\nFailed to change application status\n")
 
 def application_details(application):
     print("Application No: ",application['application_no'])
